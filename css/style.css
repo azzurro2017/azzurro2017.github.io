@@ -1,0 +1,1144 @@
+@charset "utf-8";
+
+
+
+
+
+
+
+
+/*　共通定義　*/
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6em;
+  font-family: "Noto Sans Japanese", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "Meiryo", "メイリオ", sans-serif;
+  font-weight: normal;
+  line-height: 1.2;
+  /*    テスト　*/
+  word-wrap: break-word;
+}
+
+a {
+  text-decoration: none;
+  color: navy;
+}
+
+
+a:hover {
+  opacity: 0.8;
+}
+
+
+li {
+  list-style: none;
+}
+
+
+
+
+
+
+
+
+
+/*    調整中 width:100%で対応していたが、幅を広げると上から４番目と５番目の画像がその幅に対応しけれずその2箇所だけ小さいままトロ残された。これは画像そのものが他のに比べて小さかったためと思われる。記憶が正しければそれぞれ幅660px程度だった。それ以外の画像はその倍以上に設定されていたはず。なので修正した４番目と５番目の画像の幅に大きい値を設定したためにmax-witdh:100%でも問題無く表示されたと推測。レスポンシブに対応した画像対策としてこの方法が主流なため正しい理解だと思われる。　*/
+
+img {
+  vertical-align: middle;
+  max-width: 100%;
+  height: auto;
+}
+
+
+
+
+
+
+
+
+/*    //調整中　*/
+
+.container {
+  width: 94.414%;
+  margin: 0 auto;
+}
+
+
+
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.parallel {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between
+}
+
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+
+.center {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.btn {
+  border: 1px solid;
+  border-color: white;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.btn a {
+  display: block;
+  padding: 20px 0;
+}
+
+
+
+
+
+
+
+
+
+
+/* // 共通定義*/
+
+
+/*header*/
+
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: white;
+  -webkit-box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.4);
+}
+
+
+
+.home {
+  padding: 20px 0;
+}
+
+
+.logo {
+  height: 24px;
+  margin-top: -5px;
+  padding-right: 5px;
+}
+
+.title {
+  height: 18px;
+  margin-left: -20px
+}
+
+
+.sub-title {
+  font-size: 1rem;
+  height: 20px;
+  line-height: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* button effect */
+
+.menu-icon {
+  margin-top: -5px;
+}
+
+
+.st-Header_MenuBtn {
+  width: 20px;
+  position: relative;
+}
+
+.st-Header_MenuBtn:hover {
+  cursor: pointer;
+}
+
+.st-Header_MenuBtn span {
+  width: 20px;
+  height: 2px;
+  position: absolute;
+  border-top: 3px solid #333;
+  border-radius: 2px;
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+.st-Header_MenuBtn span:first-child {
+  top: 0;
+}
+
+.st-Header_MenuBtn span:nth-child(2) {
+  top: 8px;
+}
+
+.st-Header_MenuBtn span:last-child {
+  top: 17px;
+}
+
+.st-Header_MenuBtn.is-active span:first-child {
+  top: 7px;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.st-Header_MenuBtn.is-active span:nth-child(2) {
+  display: none;
+}
+
+.st-Header_MenuBtn.is-active span:last-child {
+  top: 7px;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+
+nav {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  background-color: #fff;
+  z-index: 10;
+}
+
+nav > ul li {
+  padding: 11px 0;
+}
+
+
+
+
+
+nav > ul li:first-child {
+  background: #FF5983;
+}
+
+nav > ul li:nth-child(2) {
+  background: #00b8e6;
+}
+
+nav > ul li:nth-child(3) {
+  background: #2459b2;
+}
+
+
+
+nav > ul li a {
+  display: block;
+  padding: 4% 3.2%;
+  border-top: 1px #ccc;
+  color: white;
+}
+
+nav > ul .sprite1 a:after {
+  background-image: url(../image/sp/common/sprite_human1.png);
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 5px;
+  width: 62.5px;
+  height: 75px;
+  display: block;
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: auto 150px;
+  -webkit-animation: spriteAnimation-B 0.6s steps(9) 0s infinite normal;
+  animation: spriteAnimation-B 0.6s steps(9) 0s infinite normal;
+}
+
+nav > ul .bg-color {
+  background: #def2f7;
+}
+
+
+
+nav > ul li .word-color {
+  color: black;
+}
+
+
+.contact-info {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.contact-info p {
+  padding: 5px 0;
+}
+
+.contact-info .tel {
+  color: blue;
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+
+
+
+
+
+@-webkit-keyframes spriteAnimation-B {
+  0% {
+    background-position: left bottom;
+  }
+  100% {
+    background-position: right bottom;
+  }
+}
+
+
+
+@keyframes spriteAnimation-B {
+  0% {
+    background-position: left bottom;
+  }
+  100% {
+    background-position: right bottom;
+  }
+}
+
+
+
+
+
+
+
+nav > ul li:last-child {
+  border-bottom: 1px dotted #ccc;
+}
+
+nav > ul li a:hover {
+  color: #ddd;
+}
+
+
+
+
+
+
+/* // button effect */
+
+
+/* //header */
+
+
+/* main */
+
+.sample {
+  padding: 230px 0 0;
+  background-color: #5ca9ff;
+  position: relative;
+}
+
+
+
+
+.hero {
+  background: #5ca9ff url(../image/sp/common/bg.png);
+  padding-top: 10px;
+  background-size: cover;
+  background-position: center;
+}
+
+
+
+
+.catchy {
+  width: 50%;
+  margin: 10px auto 30px;
+}
+
+.catchy img {
+  margin-top: -130px;
+}
+
+
+.dscrpt {
+  color: #1850ac;
+  font-weight: bold;
+  text-align: justify;
+  margin-bottom: 40px
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* contnet共通*/
+
+.content-1,
+.content-2 {
+  margin-bottom: 25px;
+}
+
+
+.job-area {
+  padding: 20px 0;
+}
+
+
+.job-area a {
+  color: white;
+}
+
+.link {
+  padding: 20px 0;
+}
+
+.link li {
+  width: 50%;
+  float: left
+}
+
+
+
+.animation-area {
+  margin-bottom: -25px
+}
+
+
+.animation-area img {
+  height: 55px;
+  width: auto;
+}
+
+.container-narrow {
+  margin: 5% 10%;
+}
+
+
+
+
+
+
+
+
+
+/* //contnet共通*/
+
+
+/* content-1 */
+
+.content-1 .animation-area > p {
+  color: hotpink
+}
+
+.content-1 .job-area {
+  background-color: #ff3963
+}
+
+
+
+
+
+
+
+/* //content-1 */
+
+
+/* content-2 */
+
+.content-2 .animation-area > p {
+  color: aqua
+}
+
+
+.content-2 .job-area {
+  background-color: #00a8d2
+}
+
+
+.chr-tel {
+  text-align: right;
+  margin-top: -20px;
+  margin-bottom: -20px;
+}
+
+.chr-tel img {
+  height: 90px;
+}
+
+
+
+
+
+
+
+/* //content-2 */
+
+
+/* refference content-3 */
+
+.recent-jobs-header {
+  padding: 25px 30px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+.flex-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+
+.flex-item {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+.icons {
+  text-align: right
+}
+
+
+.icons li {
+  display: inline-block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*ここから*/
+
+.job-list.inner-container {
+  background-size: auto 130px;
+  background-position: center bottom 0px;
+}
+
+
+.job-list.inner-container {
+  background-image: url(../image/sp/common/bg_grayscale_wt.png);
+  background-position: center bottom -40px;
+  background-repeat: no-repeat;
+  background-size: 1000px auto;
+  padding-bottom: 120px;
+}
+
+
+.backcolor {
+  background: #e2ded8;
+}
+
+
+
+
+.job-list .job-list-container {
+  overflow-x: auto;
+  padding-left: 10px;
+  margin: 0 0 10px;
+}
+
+
+
+
+.job-list .job-list-container {
+  padding: 0 20px;
+}
+
+
+
+
+.job-list .job-list-container {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+
+
+.job-list .flex-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+  padding: 0px;
+  margin: 0;
+}
+
+
+
+
+
+
+
+/*確認箇所 白背景の余白調整に関して*/
+
+.job-list .item.flex-item {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -ms-flex-preferred-size: auto;
+  flex-basis: auto;
+}
+
+.job-list .item {
+  padding: 0 10px 0 0;
+  width: calc(100vw - 70px);
+  -webkit-scroll-snap-coordinate: 50% 50%;
+  -ms-scroll-snap-coordinate: 50% 50%;
+  scroll-snap-coordinate: 50% 50%;
+}
+
+.job-list .item {
+  margin: 10px auto 20px;
+  width: 100%;
+}
+
+
+
+/*//確認箇所*/
+
+.job-list .job-item-outer-wrapper {
+  position: relative;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  height: 100% !important;
+  border-radius: 5px;
+  background: #fff;
+}
+
+.job-list .job-item-wrapper {
+  position: relative;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.job-list .job-item-header {
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+}
+
+
+.job-list .job-item-header a {
+  padding: 20px 25px 14px;
+}
+
+.job-list .job-item-header a {
+  display: block;
+  padding: 15px 20px 19px;
+  -webkit-transition: background 0.2s ease;
+  transition: background 0.2s ease;
+}
+
+
+
+.job-list .description-list {
+  overflow: hidden;
+  line-height: 2.1;
+}
+
+
+.job-list .job-item-detail {
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+}
+
+
+.job-list .description-term {
+  float: left;
+  line-height: 0;
+  min-height: 25px;
+}
+
+
+
+
+
+.job-list .job-item-header .categories {
+  margin: 5px 0;
+}
+
+
+
+.job-list .jobs-item-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  line-height: 2.0rem;
+  -webkit-transition: color 0.1s ease;
+  transition: color 0.1s ease;
+}
+
+
+
+.job-list .jobs-item-detail-info {
+  font-size: 1.1rem;
+  line-height: 1.5rem;
+  margin-top: 5px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+
+
+
+.job-list .job-item-detail {
+  padding: 10px 25px 9px 20px;
+}
+
+.job-list .description-list {
+  overflow: hidden;
+  line-height: 2.1;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+}
+
+
+.job-list .description-term .icon {
+  opacity: 0.5;
+}
+
+
+.icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+  vertical-align: middle;
+  padding: 8px;
+}
+
+
+
+
+
+.job-list .job-item-text-wrapper {
+  padding-top: 15px;
+}
+
+
+.job-list .job-item-text-wrapper {
+  padding: 15px 25px;
+}
+
+
+.job-list .job-item-text {
+  position: relative;
+  height: 5rem;
+  min-height: 80px;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  text-align: justify;
+  overflow: hidden;
+}
+
+
+.job-list .job-item-moreinfo {
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+
+.job-list .job-item-moreinfo a {
+  background: #8d8982;
+  padding: 5px 20px;
+  min-width: 100px;
+  display: inline-block;
+  color: #fff;
+  font-size: 1.2rem;
+  line-height: 3rem;
+  width: 100%;
+  border-radius: 0 0 3px 3px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+
+.job-list .more-info {
+  margin: 20px auto 15px;
+}
+
+
+
+.job-list .more-info {
+  width: 100%;
+  text-align: center;
+  margin: 40px auto 30px;
+}
+
+
+
+
+.job-list .more-info a {
+  margin: auto;
+  text-decoration: none;
+  font-weight: bold;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.6);
+}
+
+
+.button-state {
+  display: inline-block;
+  -webkit-transition: all 0.15s ease;
+  transition: all 0.15s ease;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* //refference content-3 */
+
+
+/* content-3 
+
+.group {
+  padding: 20px 0;
+}
+
+
+.group p {
+  float: left;
+}
+
+
+.group .icons {
+  float: right;
+}
+
+
+.content-3 {
+  overflow-x: scroll;
+}
+
+
+.job-offer {
+  background-color: #e2ded8;
+  padding: 10px 10px 160px;
+  display: inline-block;
+  white-space: nowrap;
+
+}
+
+
+.offer-1 {
+  display: inline-block;
+  margin: 15px 0;
+}
+
+
+
+
+.summary {
+  background-color: white;
+  border-radius: 5px 0;
+
+  width: 70%;
+  font-size: 1.5rem;
+  
+}
+
+.summary h2 {
+  margin: 10px 0;
+  font-weight: bold;
+  font-size: 1.35rem
+}
+
+
+
+.overview, .condition{
+    border-bottom: dotted 1px;
+    
+}
+
+.overview, .condition, .description{
+    padding: 20px 0;
+}
+
+.description p{
+
+}
+
+
+
+
+
+.smaller {
+  color: rgba(0,0,0,0.5);
+  font-size: 0.5rem;
+  
+}
+
+
+
+
+
+.border {
+  border: 2px solid;
+  padding: 2px;
+}
+
+
+
+
+
+
+.detail p {
+  text-align: center;
+  background-color: green;
+  border-radius: 0 0 5px 5px;
+    width: 70%
+}
+
+
+.detail p a {
+  display: block;
+  padding: 10px 0;
+  color: white
+}
+
+
+.bg-building {
+  position: relative;
+}
+
+.bg-building p {
+  position: absolute;
+  top: -130px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  text-decoration: underline;
+}
+
+
+.bg-building img {
+  position: absolute;
+  top: -120px
+}
+
+
+
+
+ */
+
+
+/* //main */
+
+
+/*　footer */
+
+.contact {
+  text-align: center;
+  margin: 20px 0
+}
+
+
+.contact h2 {
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 10px
+}
+
+
+.contact P:last-child {
+  font-size: 1.3rem;
+}
+
+
+
+.number {
+  font-weight: bold;
+  margin-bottom: 10px
+}
+
+
+.circle {
+  color: #fff;
+  background-color: aquamarine;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 50%;
+  font-size: 40px;
+  margin: 20px 0
+}
+
+
+.company-info {
+  margin-top: 100px;
+  color: white;
+  line-height: 30px;
+}
+
+.company-info a {
+  color: white
+}
+
+.message {
+  background-color: black;
+  text-decoration: underline;
+  padding: 40px 0
+}
+
+.pr-1 {
+  background-color: rgba( 0, 0, 0, 0.95);
+  padding: 20px 0;
+}
+
+.pr-2 {
+  background-color: rgba( 0, 0, 0, 0.85);
+  padding: 20px 0;
+}
+
+
+.location {
+  background-color: black;
+  padding: 20px 0
+}
+
+.location h2 {
+  margin-bottom: 10px;
+}
+
+.location p {
+  font-size: 1rem
+}
+
+
+
+.policy a {
+  font-size: 1rem;
+  padding-right: 30px
+}
+
+small {
+  font-size: .8rem
+}
+
+
+
+
+
+
+
+
+/*　//footer */
+
+
+/* media query */
+
+
+/* 768px以上　*/
+
+@media screen and (min-width: 768px) {}
+
+
+
+
+
+
+
+
+/* // 768px以上　*/
+
+
+/* 1025px以上　*/
+
+@media screen and (min-width: 1025px) {}
+
+
+
+
+
+
+
+
+/* // 1025px以上　*/
