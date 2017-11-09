@@ -153,8 +153,8 @@ img {
 }
 
 .title {
-  height: 18px;
-  margin-left: -20px
+  height: 16px;
+
 }
 
 
@@ -1070,7 +1070,7 @@ nav > ul li a:hover {
 
 .pr-1 {
   background-color: rgba( 0, 0, 0, 0.95);
-  padding: 20px 0;
+ 
 }
 
 .pr-2 {
