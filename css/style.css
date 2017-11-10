@@ -7,6 +7,12 @@
 
 
 
+
+
+
+
+
+
 /*　共通定義　*/
 
 *,
@@ -45,20 +51,17 @@ li {
 }
 
 
-
-
-
-
-
-
-
-/*    調整中 width:100%で対応していたが、幅を広げると上から４番目と５番目の画像がその幅に対応しけれずその2箇所だけ小さいままトロ残された。これは画像そのものが他のに比べて小さかったためと思われる。記憶が正しければそれぞれ幅660px程度だった。それ以外の画像はその倍以上に設定されていたはず。なので修正した４番目と５番目の画像の幅に大きい値を設定したためにmax-witdh:100%でも問題無く表示されたと推測。レスポンシブに対応した画像対策としてこの方法が主流なため正しい理解だと思われる。　*/
-
 img {
   vertical-align: middle;
   max-width: 100%;
   height: auto;
 }
+
+
+
+
+
+
 
 
 
@@ -122,6 +125,12 @@ img {
 
 
 
+
+
+
+
+
+
 /* // 共通定義*/
 
 
@@ -154,7 +163,6 @@ img {
 
 .title {
   height: 16px;
-
 }
 
 
@@ -163,6 +171,12 @@ img {
   height: 20px;
   line-height: 20px;
 }
+
+
+
+
+
+
 
 
 
@@ -273,7 +287,7 @@ nav > ul li a {
 }
 
 nav > ul .sprite1 a:after {
-  background-image: url(../image/sp/common/sprite_human1.png);
+  background-image: url(../image/sp/common/r-sprite_human1.png);
   content: "";
   position: absolute;
   top: 0;
@@ -358,6 +372,12 @@ nav > ul li a:hover {
 
 
 
+
+
+
+
+
+
 /* // button effect */
 
 
@@ -410,16 +430,6 @@ nav > ul li a:hover {
 
 
 
-
-
-
-
-
-
-
-
-
-
 /* contnet共通*/
 
 .content-1,
@@ -443,7 +453,7 @@ nav > ul li a:hover {
 
 .link li {
   width: 50%;
-  float: left
+  float: left;
 }
 
 
@@ -465,11 +475,6 @@ nav > ul li a:hover {
 
 
 
-
-
-
-
-
 /* //contnet共通*/
 
 
@@ -482,10 +487,6 @@ nav > ul li a:hover {
 .content-1 .job-area {
   background-color: #ff3963
 }
-
-
-
-
 
 
 
@@ -518,19 +519,19 @@ nav > ul li a:hover {
 
 
 
-
-
 /* //content-2 */
 
 
-/* refference content-3 */
+/* 分析箇所 content-3 */
 
-.recent-jobs-header {
-  padding: 25px 30px;
+
+/*ヘッダー*/
+
+.recent-jobs .recent-jobs-header {
+  padding: 5px 30px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-
 
 .flex-container {
   display: -webkit-box;
@@ -545,33 +546,36 @@ nav > ul li a:hover {
 }
 
 
-.flex-item {
+
+
+/* アイコンのulに対して*/
+
+.recent-jobs-header .icons {
+  text-align: right;
+  line-height: 3rem;
+}
+
+
+.recent-jobs-header .flex-item {
   -webkit-box-flex: 1;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
 }
 
-.icons {
-  text-align: right
-}
 
 
-.icons li {
+/* //アイコンのulに対して*/
+
+.recent-jobs-header .icons li {
   display: inline-block;
+  margin-right: 20px;
+  font-size: 1.2rem;
+  line-height: 2rem;
 }
 
 
 
-
-
-
-
-
-
-
-
-
-/*ここから*/
+/* //ヘッダー*/
 
 .job-list.inner-container {
   background-size: auto 130px;
@@ -579,17 +583,15 @@ nav > ul li a:hover {
 }
 
 
-.job-list.inner-container {
-  background-image: url(../image/sp/common/bg_grayscale_wt.png);
-  background-position: center bottom -40px;
-  background-repeat: no-repeat;
-  background-size: 1000px auto;
-  padding-bottom: 120px;
+.backcolor {
+  background: #e2ded8;
 }
 
 
-.backcolor {
-  background: #e2ded8;
+.inner-container {
+  background-image: url(../image/sp/common/bg_grayscale_wt.png);
+  background-repeat: repeat-x;
+  padding-bottom: 90px;
 }
 
 
@@ -602,15 +604,6 @@ nav > ul li a:hover {
 }
 
 
-
-
-.job-list .job-list-container {
-  padding: 0 20px;
-}
-
-
-
-
 .job-list .job-list-container {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
@@ -618,7 +611,12 @@ nav > ul li a:hover {
 
 
 
-.job-list .flex-container {
+/* ulに対して この時点で横に4列が1画面に収められていた*/
+
+
+/*横に配列させる指示内容　逆に言えば、このflex-flowをいじると縦配列になる。2列にさせるにはここをいじるはず？*/
+
+.flex-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -634,11 +632,12 @@ nav > ul li a:hover {
 
 
 
+/* //ulに対して*/
 
 
-/*確認箇所 白背景の余白調整に関して*/
+/* liに対して 横スクロールが発生するも枠からはみ出る*/
 
-.job-list .item.flex-item {
+.flex-item {
   -webkit-box-flex: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
@@ -648,24 +647,27 @@ nav > ul li a:hover {
   flex-basis: auto;
 }
 
-.job-list .item {
+
+.item {
   padding: 0 10px 0 0;
+  /*    使い方調査　*/
   width: calc(100vw - 70px);
-  -webkit-scroll-snap-coordinate: 50% 50%;
-  -ms-scroll-snap-coordinate: 50% 50%;
-  scroll-snap-coordinate: 50% 50%;
 }
 
-.job-list .item {
+.item {
   margin: 10px auto 20px;
-  width: 100%;
+  /*各求人欄の幅調整はこの箇所を修正　余白の原因は幅100%*/
+  width: 70%;
 }
 
 
 
-/*//確認箇所*/
+/* //liに対して*/
 
-.job-list .job-item-outer-wrapper {
+
+/* liの中のdivに対して 背景が白くなる*/
+
+.job-item-outer-wrapper {
   position: relative;
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
@@ -674,6 +676,13 @@ nav > ul li a:hover {
   background: #fff;
 }
 
+
+
+/* //liの中のdivに対して*/
+
+
+/* divの中のdivに対して */
+
 .job-list .job-item-wrapper {
   position: relative;
   overflow: hidden;
@@ -681,6 +690,10 @@ nav > ul li a:hover {
   box-sizing: border-box;
   height: 100%;
 }
+
+
+
+/* divの中のdivに対して */
 
 .job-list .job-item-header {
   border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
@@ -691,6 +704,7 @@ nav > ul li a:hover {
   padding: 20px 25px 14px;
 }
 
+
 .job-list .job-item-header a {
   display: block;
   padding: 15px 20px 19px;
@@ -698,54 +712,15 @@ nav > ul li a:hover {
   transition: background 0.2s ease;
 }
 
-
-
-.job-list .description-list {
-  overflow: hidden;
-  line-height: 2.1;
-}
-
-
-.job-list .job-item-detail {
-  border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
-}
-
-
-.job-list .description-term {
-  float: left;
-  line-height: 0;
-  min-height: 25px;
+gadget_recent-joblist.css:160 .job-list .item a {
+  text-decoration: none;
 }
 
 
 
 
 
-.job-list .job-item-header .categories {
-  margin: 5px 0;
-}
-
-
-
-.job-list .jobs-item-title {
-  font-size: 1.6rem;
-  font-weight: bold;
-  line-height: 2.0rem;
-  -webkit-transition: color 0.1s ease;
-  transition: color 0.1s ease;
-}
-
-
-
-.job-list .jobs-item-detail-info {
-  font-size: 1.1rem;
-  line-height: 1.5rem;
-  margin-top: 5px;
-  color: rgba(0, 0, 0, 0.5);
-}
-
-
-
+/* 中段　要約部分*/
 
 .job-list .job-item-detail {
   padding: 10px 25px 9px 20px;
@@ -754,7 +729,17 @@ nav > ul li a:hover {
 .job-list .description-list {
   overflow: hidden;
   line-height: 2.1;
+}
+
+gadget_recent-joblist.css:240 .job-list .job-item-detail {
   border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+  padding: 10px 25px 9px 20px;
+}
+
+.job-list .description-term {
+  float: left;
+  line-height: 0;
+  min-height: 25px;
 }
 
 
@@ -762,19 +747,21 @@ nav > ul li a:hover {
   opacity: 0.5;
 }
 
-
-.icon {
+layout_common.css:314 .icon {
   display: inline-block;
   width: 24px;
   height: 24px;
   margin-right: 5px;
   vertical-align: middle;
-  padding: 8px;
 }
 
 
 
 
+/* 中段　要約部分*/
+
+
+/*　下段　*/
 
 .job-list .job-item-text-wrapper {
   padding-top: 15px;
@@ -796,14 +783,12 @@ nav > ul li a:hover {
   overflow: hidden;
 }
 
-
 .job-list .job-item-moreinfo {
   text-align: center;
   position: absolute;
   bottom: 0;
   width: 100%;
 }
-
 
 .job-list .job-item-moreinfo a {
   background: #8d8982;
@@ -821,10 +806,12 @@ nav > ul li a:hover {
 
 
 
+
+/*　//下段　*/
+
 .job-list .more-info {
   margin: 20px auto 15px;
 }
-
 
 
 .job-list .more-info {
@@ -836,19 +823,8 @@ nav > ul li a:hover {
 
 
 
-.job-list .more-info a {
-  margin: auto;
-  text-decoration: none;
-  font-weight: bold;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.6);
-}
 
 
-.button-state {
-  display: inline-block;
-  -webkit-transition: all 0.15s ease;
-  transition: all 0.15s ease;
-}
 
 
 
@@ -856,159 +832,7 @@ nav > ul li a:hover {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* //refference content-3 */
-
-
-/* content-3 
-
-.group {
-  padding: 20px 0;
-}
-
-
-.group p {
-  float: left;
-}
-
-
-.group .icons {
-  float: right;
-}
-
-
-.content-3 {
-  overflow-x: scroll;
-}
-
-
-.job-offer {
-  background-color: #e2ded8;
-  padding: 10px 10px 160px;
-  display: inline-block;
-  white-space: nowrap;
-
-}
-
-
-.offer-1 {
-  display: inline-block;
-  margin: 15px 0;
-}
-
-
-
-
-.summary {
-  background-color: white;
-  border-radius: 5px 0;
-
-  width: 70%;
-  font-size: 1.5rem;
-  
-}
-
-.summary h2 {
-  margin: 10px 0;
-  font-weight: bold;
-  font-size: 1.35rem
-}
-
-
-
-.overview, .condition{
-    border-bottom: dotted 1px;
-    
-}
-
-.overview, .condition, .description{
-    padding: 20px 0;
-}
-
-.description p{
-
-}
-
-
-
-
-
-.smaller {
-  color: rgba(0,0,0,0.5);
-  font-size: 0.5rem;
-  
-}
-
-
-
-
-
-.border {
-  border: 2px solid;
-  padding: 2px;
-}
-
-
-
-
-
-
-.detail p {
-  text-align: center;
-  background-color: green;
-  border-radius: 0 0 5px 5px;
-    width: 70%
-}
-
-
-.detail p a {
-  display: block;
-  padding: 10px 0;
-  color: white
-}
-
-
-.bg-building {
-  position: relative;
-}
-
-.bg-building p {
-  position: absolute;
-  top: -130px;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
-  text-decoration: underline;
-}
-
-
-.bg-building img {
-  position: absolute;
-  top: -120px
-}
-
-
-
-
- */
-
-
-/* //main */
+/* //分析箇所 content-3 */
 
 
 /*　footer */
@@ -1070,12 +894,12 @@ nav > ul li a:hover {
 
 .pr-1 {
   background-color: rgba( 0, 0, 0, 0.95);
- 
+  padding: 20px 0 0 20px;
 }
 
 .pr-2 {
   background-color: rgba( 0, 0, 0, 0.85);
-  padding: 20px 0;
+  padding: 20px 0 0 20px;
 }
 
 
@@ -1105,25 +929,211 @@ small {
 
 
 
-
-
-
-
-
 /*　//footer */
 
 
 /* media query */
 
 
+/* 767px以下　*/
+
+@media screen and (max-width: 767px) {
+  .ipad-header {
+    display: none
+  }
+
+  .add-pic-ipad {
+    display: none;
+  }
+
+  .link li {
+    width: 50%;
+    float: left;
+  }
+
+
+  .ipad-allign {
+    display: block;
+  }
+}
+
+
+
+
+/* //767px以下　*/
+
+
 /* 768px以上　*/
 
-@media screen and (min-width: 768px) {}
+@media screen and (min-width: 768px) {
+  /*    header */
+  .ipad-header {
+    position: static;
+  }
+
+
+  .sp-header {
+    display: none;
+  }
+
+
+  .home {
+    float: left;
+  }
+
+  .sub-menu {
+    float: right
+  }
+
+  .sub-menu li {
+    float: left;
+    padding-top: 24px;
+    margin-left: 10px;
+    font-size: 1.3rem
+  }
+
+
+  .ipad-menu ul li a {
+    color: white;
+  }
+
+
+  ul .man-1 a:after {
+    content: url(../image/sp/common/sprite_human1.png);
+    position: relative;
+    top: 15px;
+    right: -15%
+  }
+
+  ul .man-2 a:after {
+    content: url(../image/sp/common/sprite_human2.png);
+    position: relative;
+    top: 15px;
+    right: -15%
+  }
+
+  ul .man-3 a:after {
+    content: url(../image/sp/common/sprite_human3.png);
+    position: relative;
+    top: 15px;
+    right: -15%
+  }
+
+  .top-menu {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    text-align: center;
+  }
 
 
 
 
+  .man-1 {
+    background: #FF5983;
+  }
 
+  .man-2 {
+    background: #00b8e6;
+  }
+
+  .man-3 {
+    background: #2459b2;
+  }
+
+  /*    //header */
+  .dscrpt {
+    display: none;
+  }
+
+
+
+  .hero {
+    background: url(../image/sp/common/bg.png);
+    padding-top: 10px;
+    background-size: cover;
+    background-position: center;
+    padding-top: 100px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+  }
+
+
+
+  .sample {
+    padding: 0 0;
+  }
+
+
+
+
+  .catchy img {
+    float: left;
+    width: 50%;
+    padding: 100px 20px 0;
+  }
+
+
+  .ipad-allign {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+
+  .content-1,
+  .content-2 {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
+
+
+  .link li {
+    width: 100%;
+    float: none;
+  }
+
+  .job-list .item {
+    width: 50%;
+  }
+  /* overflow-xはいじらず、下記スタイルをmedia queryに追加したとこ意図した実装ができた。   */
+  .flex-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  /*   上記と比較
+
+flex-flow要復習
+    
+    .flex-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+  padding: 0px;
+  margin: 0;
+}
+ 
+*/
+  .pr-1,
+  .pr-2 {
+    float: left;
+    width: 50%;
+    padding-left: 20px;
+  }
+}
 
 
 
@@ -1133,6 +1143,12 @@ small {
 /* 1025px以上　*/
 
 @media screen and (min-width: 1025px) {}
+
+
+
+
+
+
 
 
 
