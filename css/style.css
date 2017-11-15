@@ -181,7 +181,11 @@ img {
 
 
 
-
+  .pc-menu{
+        display: block;
+    }
+    
+    
 
 
 
@@ -368,17 +372,13 @@ nav > ul li a:hover {
 }
 
 
-
-
-
-
-
-
-
-
-
-
 /* // button effect */
+
+
+
+
+
+
 
 
 /* //header */
@@ -395,8 +395,10 @@ nav > ul li a:hover {
 
 
 
+/* #5ca9ff */
 .hero {
-  background: #5ca9ff url(../image/sp/common/bg.png);
+  background: 
+ url(../image/sp/common/bg.png);
   padding-top: 10px;
   background-size: cover;
   background-position: center;
@@ -942,6 +944,7 @@ small {
     display: none
   }
 
+
   .add-pic-ipad {
     display: none;
   }
@@ -956,6 +959,7 @@ small {
     display: block;
   }
 }
+
 
 
 
@@ -1070,7 +1074,7 @@ small {
   .catchy img {
     float: left;
     width: 50%;
-    padding: 100px 20px 0;
+    padding: 200px 20px 0;
   }
 
 
@@ -1136,25 +1140,189 @@ flex-flow要復習
 }
 
 
+.pc-menu{
+    display: none;
+}
+
 
 /* // 768px以上　*/
 
 
+
+
+
+
+
+
 /* 1025px以上　*/
 
-@media screen and (min-width: 1025px) {}
+@media screen and (min-width: 1025px) {
+    
+    
+
+    .pc-menu{
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 3;
+    
+    }
+    
+    .ipad-header{
+        display: none;
+    }
+    
+    
+    
+    .left{
+        float: left;
+        width: 25%;
+    }
+    
+    
+    .right{
+        float: right;
+        width: 75%
+    }
+    
+    .home-btn{
+        text-align: center;
+        margin: 100px auto ;
+    }
+    
+    .logo, .title{
+        display: block;
+        margin: 0 auto
+    }
+    
+    .logo{
+        height:40px
+    }
+    
+    .title{
+        height: 20px
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  .pc-menu ul li a {
+    color: white;
+    padding: 20px
+  }
+
+
+  ul .man-1 a:after {
+    content: url(../image/sp/common/sprite_human1.png);
+    position: relative;
+    top: 2px;
+    right:0;
+
+  }
+
+  ul .man-2 a:after {
+    content: url(../image/sp/common/sprite_human2.png);
+    position: relative;
+    top: 2px;
+    right: 0;
+  }
+
+  ul .man-3 a:after {
+    content: url(../image/sp/common/sprite_human3.png);
+    position: relative;
+    top: 2px;
+    right: 0;
+  }
 
 
 
 
+  .man-1 {
+    background: #FF5983;
+  }
 
+  .man-2 {
+    background: #00b8e6;
+  }
 
+  .man-3 {
+    background: #2459b2;
+  }
 
-
-
-
-
-
-
-
+    
+    .option{
+        padding: 10px 0;
+        background-color:gainsboro;
+        position: relative;
+    }
+    
+    .option .word-color{
+      color: darkblue;
+    }
+    
+    
+    .option span{
+        position: absolute;
+        right: 10px
+    }
+    
+    
+    
+    .contact-info{
+        padding:10px
+    }
+    
+    
+    .rgst{
+        border: 2px solid;
+        border-radius: 5px
+    }
+    
+    
+    
+      .job-list .item {
+    width: 25%;
+  }
+    
+    
+    
+    
+    
+ 
+    .contact{
+        float: left;
+        width: 50%;
+    }
+    
+    
+    .pc-footer-cg{
+        width: 50%;
+    }
+    
+    .pr-1, .pr-2{
+        width: 50%;
+/*    padding追加でしのいだが、現実的な対処ではない    */
+        padding-bottom: 30px;
+            
+    }
+    
+    .message, .pc-footer-cg{
+        float: left;
+        width: 50%;
+    }
+    
+     
+    
+    
+    
+}
 /* // 1025px以上　*/
